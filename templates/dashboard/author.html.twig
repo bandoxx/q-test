@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+{% endblock %}
+
+{% block title %}Authors{% endblock %}
+
+{% block body %}
+    <table id="table_id" class="display">
+        <thead>
+        <tr>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Birthday</th>
+            <th>Gender</th>
+            <th>Place of birth</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ author.firstName }}</td>
+            <td>{{ author.lastName }}</td>
+            <td>{{ author.birthday|date('d.m.Y.') }}</td>
+            <td>{{ author.gender }}</td>
+            <td>{{ author.placeOfBirth }}</td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}
