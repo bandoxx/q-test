@@ -17,6 +17,14 @@ framework:
     php_errors:
         log: true
 
+    http_client:
+        scoped_clients:
+            qclient:
+                base_uri: 'https://symfony-skeleton.q-tests.com'
+                headers:
+                    Accept: 'application/json'
+                    Content-Type: 'application/json'
+
 when@test:
     framework:
         test: true
