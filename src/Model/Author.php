@@ -2,18 +2,27 @@
 
 namespace App\Model;
 
+use Symfony\Component\Serializer\Annotation\SerializedName;
+use Symfony\Contracts\Service\Attribute\Required;
+
 class Author
 {
 
-    private int $id;
+    private ?int $id;
+    #[SerializedName('first_name'), Required]
     private string $firstName;
+    #[SerializedName('last_name'), Required]
     private string $lastName;
+    #[SerializedName('birthday'), Required]
     private \DateTime $birthday;
+    #[SerializedName('biography')]
     private ?string $gender;
+    #[SerializedName('gender'), Required]
     private ?string $biography;
+    #[SerializedName('place_of_birth'), Required]
     private string $placeOfBirth;
 
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -65,6 +65,16 @@ class QClient
         return AuthorMapper::toObject($data);
     }
 
+    public function insertAuthor(Author $author)
+    {
+        return $this->qclient->request('POST', '/api/v2/authors', [
+            'headers' => [
+                'Authorization' => $this->getBearerCode()
+            ],
+            'json' => $author
+        ])->toArray();
+    }
+
     private function getBearerCode()
     {
         /** @var User $user */
