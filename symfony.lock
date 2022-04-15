@@ -89,6 +89,18 @@
     "nikic/php-parser": {
         "version": "v4.13.2"
     },
+    "phpdocumentor/reflection-common": {
+        "version": "2.2.0"
+    },
+    "phpdocumentor/reflection-docblock": {
+        "version": "5.3.0"
+    },
+    "phpdocumentor/type-resolver": {
+        "version": "1.6.1"
+    },
+    "phpstan/phpdoc-parser": {
+        "version": "1.4.4"
+    },
     "psr/cache": {
         "version": "1.0.1"
     },
@@ -176,6 +188,9 @@
             ".env"
         ]
     },
+    "symfony/form": {
+        "version": "v5.4.7"
+    },
     "symfony/framework-bundle": {
         "version": "5.4",
         "recipe": {
@@ -231,10 +246,16 @@
             "config/packages/monolog.yaml"
         ]
     },
+    "symfony/options-resolver": {
+        "version": "v5.4.3"
+    },
     "symfony/password-hasher": {
         "version": "v5.4.3"
     },
     "symfony/polyfill-intl-grapheme": {
+        "version": "v1.25.0"
+    },
+    "symfony/polyfill-intl-icu": {
         "version": "v1.25.0"
     },
     "symfony/polyfill-intl-normalizer": {
@@ -301,6 +322,9 @@
     "symfony/security-http": {
         "version": "v5.4.5"
     },
+    "symfony/serializer": {
+        "version": "v5.4.7"
+    },
     "symfony/service-contracts": {
         "version": "v2.5.1"
     },
@@ -327,6 +351,18 @@
         "files": [
             "config/packages/twig.yaml",
             "templates/base.html.twig"
+        ]
+    },
+    "symfony/validator": {
+        "version": "5.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "5.3",
+            "ref": "c32cfd98f714894c4f128bb99aa2530c1227603c"
+        },
+        "files": [
+            "config/packages/validator.yaml"
         ]
     },
     "symfony/var-dumper": {
@@ -356,5 +392,8 @@
     },
     "twig/twig": {
         "version": "v3.3.10"
+    },
+    "webmozart/assert": {
+        "version": "1.10.0"
     }
 }
