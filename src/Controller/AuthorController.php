@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AuthorController extends AbstractController
 {
 
-    #[Route(path: '/app/authors', name: 'authors_all')]
+    #[Route(path: '/authors', name: 'authors_all')]
     public function authors(QClient $client): Response
     {
         return $this->render('dashboard/authors.html.twig', [
@@ -18,7 +18,7 @@ class AuthorController extends AbstractController
         ]);
     }
 
-    #[Route(path: '/app/authors/{id}', name: 'authors_one')]
+    #[Route(path: '/authors/{id}', name: 'authors_one')]
     public function author(int $id, QClient $client): Response
     {
         return $this->render('dashboard/author.html.twig', [
@@ -26,7 +26,7 @@ class AuthorController extends AbstractController
         ]);
     }
 
-    #[Route(path: '/app/authors/{id}/books', name: 'app_author')]
+    #[Route(path: '/authors/{id}/books', name: 'authors_books')]
     public function booksByAuthor(int $id, QClient $client): Response
     {
         return $this->render('dashboard/author.html.twig', [
