@@ -4,9 +4,13 @@ namespace App\Client;
 
 use App\Entity\User;
 use App\Mapper\AuthorMapper;
+use App\Mapper\BookMapper;
 use App\Model\Author;
+use App\Model\Book;
+use Symfony\Component\Security\Core\Exception\UserNotFoundException;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface;
 
 class QClient
 {
@@ -20,7 +24,7 @@ class QClient
         $this->security = $security;
     }
 
-    public function login(string $email, string $password)
+    public function login(string $email, string $password): ResponseInterface
     {
         return $this->qclient->request('POST', '/api/v2/token', [
             'json' => [
@@ -30,7 +34,7 @@ class QClient
         ]);
     }
 
-    public function refreshToken(string $token)
+    public function refreshToken(string $token): array
     {
         return $this->qclient->request('POST', "/api/v2/token/refresh/$token")->toArray();
     }
@@ -65,7 +69,7 @@ class QClient
         return AuthorMapper::toObject($data);
     }
 
-    public function insertAuthor(Author $author)
+    public function insertAuthor(Author $author): array
     {
         return $this->qclient->request('POST', '/api/v2/authors', [
             'headers' => [
@@ -75,11 +79,24 @@ class QClient
         ])->toArray();
     }
 
-    private function getBearerCode()
+    public function insertBook(Book $book): array
     {
-        /** @var User $user */
+        return $this->qclient->request('POST', '/api/v2/books', [
+            'headers' => [
+                'Authorization' => $this->getBearerCode()
+            ],
+            'json' => BookMapper::toArray($book)
+        ])->toArray();
+    }
+
+    private function getBearerCode(): string
+    {
+        /** @var User|null $user */
         $user = $this->security->getUser();
 
+        if (!$user) {
+            throw new UserNotFoundException();
+        }
 
         if ($user->getAccessTokenExpiresAt() < new \DateTime()) {
             //$this->get
